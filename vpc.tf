@@ -9,7 +9,7 @@ variable "region" {
     description = "AWS Region"
 }
 
-provide "aws" {
+provider "aws" {
     region = var.region
 }
 
