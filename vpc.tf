@@ -1,6 +1,5 @@
 resource "aws_eip" "nat" {
   count = 3
-
   vpc = true
 }
 
@@ -26,7 +25,7 @@ resource "random_string" "suffix" {
 
 module "vpc" {
   source = "terraform-aws-modules/vpc/aws"
-  version = "3.2.0"
+#  version = "3.2.0"
 
   name = "dragon-vpc"
   cidr = "10.0.0.0/16"
@@ -36,12 +35,12 @@ module "vpc" {
   public_subnets  = ["10.0.101.0/24", "10.0.102.0/24", "10.0.103.0/24"]
 
   enable_nat_gateway = true
-  single_nat_gateway  = false
+  single_nat_gateway  = true
   enable_dns_hostnames = true
 
   
-  reuse_nat_ips       = true                    
-  external_nat_ip_ids = "${aws_eip.nat.*.id}" 
+#  reuse_nat_ips       = true                    
+#  external_nat_ip_ids = "${aws_eip.nat.*.id}" 
 
   tags = {
     Terraform = "true"
