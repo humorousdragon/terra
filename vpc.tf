@@ -1,7 +1,7 @@
-resource "aws_eip" "nat" {
-  count = 3
-  vpc = true
-}
+# resource "aws_eip" "nat" {
+#  count = 3
+#  vpc = true
+#}
 
 variable "region" {
     default = "ap-south-1"
@@ -42,19 +42,19 @@ module "vpc" {
 #  reuse_nat_ips       = true                    
 #  external_nat_ip_ids = "${aws_eip.nat.*.id}" 
 
-  tags = {
-    Terraform = "true"
-    Environment = "dev"
-    "kubernetes.io/cluster/${local.cluster_name}" = "shared"
-  }
+#  tags = {
+#    Terraform = "true"
+#    Environment = "dev"
+#    "kubernetes.io/cluster/${local.cluster_name}" = "shared"
+#  }
 
-  public_subnet_tags = {
-    "kubernetes.io/cluster/${local.cluster_name}" = "shared"
-    "kubernetes.io/role/elb"                      = "1"
-  }
+#  public_subnet_tags = {
+#    "kubernetes.io/cluster/${local.cluster_name}" = "shared"
+#    "kubernetes.io/role/elb"                      = "1"
+#  }
 
-  private_subnet_tags = {
-    "kubernetes.io/cluster/${local.cluster_name}" = "shared"
-    "kubernetes.io/role/internal-elb"             = "1"
-  }
+#  private_subnet_tags = {
+#    "kubernetes.io/cluster/${local.cluster_name}" = "shared"
+#    "kubernetes.io/role/internal-elb"             = "1"
+#  }
 }
