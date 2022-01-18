@@ -5,7 +5,7 @@ resource "aws_eip" "nat" {
 }
 
 variable "region" {
-    default = "ap-south"
+    default = "ap-south-1"
     description = "AWS Region"
 }
 
